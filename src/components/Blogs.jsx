@@ -1,5 +1,7 @@
 import { data } from '../App'
 import React, { useContext } from 'react'
+import { FaRegBookmark } from "react-icons/fa";
+import { FaBookmark } from "react-icons/fa";
 
 
 function Blog({cover, pp, author, date, title, tags, read, id}) {
@@ -20,13 +22,22 @@ function Blog({cover, pp, author, date, title, tags, read, id}) {
           
           <div className='flex items-center gap-4'>
             <h4 className='text-lg font-medium text-[#11111199]'>{read} minutes read</h4>
-            <button className=' bg-gray-300' onClick={()=> {
+            {bookmarks.includes(bookmarks.filter(bookmark => id === bookmark.id)[0]) ?
+            <FaBookmark className='size-6 cursor-pointer' onClick={()=> {
               if(bookmarks.includes(bookmarks.filter(bookmark => id === bookmark.id)[0])) {
                 setBookmarks(bookmarks.filter(bookmark => id !== bookmark.id));
               } else {
                 setBookmarks([...bookmarks, {id: id, title: title}]);
               }
-            }}>bookmark</button>
+            }}/>:
+            <FaRegBookmark className='size-6 cursor-pointer' onClick={()=> {
+              if(bookmarks.includes(bookmarks.filter(bookmark => id === bookmark.id)[0])) {
+                setBookmarks(bookmarks.filter(bookmark => id !== bookmark.id));
+              } else {
+                setBookmarks([...bookmarks, {id: id, title: title}]);
+              }
+            }}/>}
+            
           </div>
         </div>
       </div>
@@ -51,7 +62,7 @@ const Blogs = () => {
   console.log(blogs);
   console.log(bookmarks);
   return (
-    <div className='lg:h-screen lg:w-[70%] space-y-4 bg-white rounded-lg p-5'>
+    <div className='lg:w-[70%] space-y-4 bg-white rounded-lg p-5'>
       {blogs.map(blog => {
         return <Blog key={blog.id} cover={blog.cover_image} pp = {blog.author_profile_picture} author={blog.author} date = {blog.post_date} title = {blog.post_title} tags = {blog.tags} read = {blog.time_to_read_minutes} id= {blog.id}/>
       })}

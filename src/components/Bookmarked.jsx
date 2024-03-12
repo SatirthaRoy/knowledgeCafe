@@ -24,12 +24,14 @@ const Bookmarked = () => {
   const {bookmarks} = useContext(data);
 
   return (
-    <div className='lg:w-[29%] space-y-5'>
-      <Reading/>
-      <div className='bg-[#1111110D] rounded-lg p-5 space-y-4 lg:sticky top-4 absolute lg:overflow-y-auto'>
-        <h1 className=' text-2xl font-bold'>Bookmarked blogs: {bookmarks.length}</h1>
-        <div className='space-y-4'>
-          {bookmarks.map((bookmark, i) => <Bookmark key={i} title = {bookmark.title}/>)}
+    <div className='lg:w-[29%]'>
+      <div className='h-screen space-y-5 lg:sticky z-10 top-4 lg:overflow-y-auto'>
+        <Reading/>
+        <div className='bg-[#1111110D] rounded-lg p-5 space-y-4'>
+          <h1 className=' text-2xl font-bold'>Bookmarked blogs: {bookmarks.length}</h1>
+          <div className='space-y-4'>
+            {bookmarks.map((bookmark, i) => <Bookmark key={i} title = {bookmark.title}/>)}
+          </div>
         </div>
       </div>
     </div>

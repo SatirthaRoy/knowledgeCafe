@@ -12,7 +12,7 @@ function Blog({cover, pp, author, date, title, tags, read, id}) {
       <div className='w-full rounded-lg'><img src={cover} alt="" className='w-full rounded'/></div>
       <div className=' flex w-full gap-4'>
         <div className='rounded-full'>
-          <img src={pp} alt="" className=' size-12'/>
+          <img src={pp} alt="" className=' size-12 rounded-full'/>
         </div>
         <div className='w-full flex justify-between'>
           <div>
